@@ -189,8 +189,8 @@ define('AUTH_MODULE', 'db');
 //
 // GROUP_DATE_FORMAT_LIST - allow group date formats to be modified/extended without having to modify code
 // This will be exploded into an array at processing time so it's "key","value" (double quotes due to single quote in define)
-//  "format","human format"
+//  "smarty date format","human format"
 
 
 define ("GROUP_DATE_FORMAT_LIST_SEPARATOR", '^^');
-define('GROUP_DATE_FORMAT_LIST','"%Y-%m-%d","Y-m-d"^^"%m/%d/%Y","m/d/Y"^^"%d-%m-%Y","d-m-Y"^^"%d.%m.%Y","d.m.Y"^^"%d.%m.%Y %a","d.m.Y a"^^"%m/%d/%y (%a)","m/d/y (day)"');
+define('GROUP_DATE_FORMAT_LIST','"%Y-%m-%d","Y-m-d"^^"%m/%d/%Y","m/d/Y"^^"%d-%m-%Y","d-m-Y"^^"%d.%m.%Y","d.m.Y"^^"%d.%m.%Y %a","d.m.Y a"^^"%m/%d/%Y (%a)","mm/dd/yyyy (day)"');
