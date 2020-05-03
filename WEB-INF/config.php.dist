@@ -181,3 +181,16 @@ define('AUTH_MODULE', 'db');
 // A comma-separated list of default plugins for new group registrations.
 // Example below enables charts and attachments.
 // define('DEFAULT_PLUGINS', 'ch,at');
+
+// Panegyris Config Edits - bbrighton@panegyris.com
+
+
+// GROUP_DATE_FORMAT_LIST_SEPARATOR - separator to explode this array on (see group_edit.php)
+//
+// GROUP_DATE_FORMAT_LIST - allow group date formats to be modified/extended without having to modify code
+// This will be exploded into an array at processing time so it's "key","value" (double quotes due to single quote in define)
+//  "format","human format"
+
+
+define ("GROUP_DATE_FORMAT_LIST_SEPARATOR", '^^');
+define('GROUP_DATE_FORMAT_LIST','"%Y-%m-%d","Y-m-d"^^"%m/%d/%Y","m/d/Y"^^"%d-%m-%Y","d-m-Y"^^"%d.%m.%Y","d.m.Y"^^"%d.%m.%Y %a","d.m.Y a"^^"%m/%d/%y (%a)","m/d/y (day)"');

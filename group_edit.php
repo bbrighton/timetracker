@@ -154,6 +154,21 @@ $DATE_FORMAT_OPTIONS = array(
   array('id'=>'%d-%m-%Y','name'=>'d-m-Y'),
   array('id'=>'%d.%m.%Y','name'=>'d.m.Y'),
   array('id'=>'%d.%m.%Y %a','name'=>'d.m.Y a'));
+
+// Panegyris ++++
+if (defined('GROUP_DATE_FORMAT_LIST_SEPARATOR') && defined('GROUP_DATE_FORMAT_LIST')) {
+  $DATE_FORMAT_OPTIONS = array();
+  $DATE_FORMAT_OPTIONS_ARRAY = explode(GROUP_DATE_FORMAT_LIST_SEPARATOR, GROUP_DATE_FORMAT_LIST);
+  foreach($DATE_FORMAT_OPTIONS_ARRAY as $formatPair) {
+    $formatArray = explode(',', $formatPair);
+    $key = str_replace('"', "", $formatArray[0]);
+    $value = str_replace('"', "", $formatArray[1]);
+    array_push($DATE_FORMAT_OPTIONS, array('id'=> $key, 'name'=> $value));
+  }
+}
+// Panegyris ++++
+
+
 $form->addInput(array('type'=>'combobox','name'=>'date_format','style'=>'width: 150px;','data'=>$DATE_FORMAT_OPTIONS,'datakeys'=>array('id','name'),'value'=>$cl_date_format,
   'onchange'=>'MakeFormatPreview(&quot;date_format_preview&quot;, this);'));
 $TIME_FORMAT_OPTIONS = array(
