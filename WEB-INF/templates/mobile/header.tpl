@@ -97,6 +97,15 @@
       <!-- end of sub menu for authorized user -->
   {/if}
 {/if}
+
+      <!-- page title and user details -->
+{if $title}
+      <table id="page_title" cellspacing="0" cellpadding="5" width="{$tab_width+20}" border="0">
+        <tr><td class="sectionHeader"><div class="pageTitle">{$title}{if $timestring}: {$timestring}{/if}</div></td></tr>
+        <tr><td>{$user->getUserPartForHeader()}</td></tr> {* No need to escape as it is done in the class. *}
+      </table>
+{/if}
+      <!-- end of page title and user details -->
       
       <!-- output errors -->
 {if $err->yes()}
