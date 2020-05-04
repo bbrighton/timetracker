@@ -73,6 +73,9 @@
       <table id="sub_menu_authorized_user" cellspacing="0" cellpadding="3" width="100%" border="0">
         <tr>
           <td align="center" bgcolor="#d9d9d9" height="17" style="background-repeat: repeat-x;" background="../images/subm_bg.gif">&nbsp;
+    <!-- Added by Panegyris https://panegyris.com -->
+    <a class="mainMenu" href="../logout.php">{$i18n.menu.logout}</a>
+
     {if $user->exists() && ($user->can('track_own_time') || $user->can('track_time'))}
            <a class="mainMenu" href="time.php">{$i18n.menu.time}</a>
     {/if}
@@ -98,6 +101,7 @@
   {/if}
 {/if}
 
+    <!-- Added by Panegyris https://panegyris.com -->
       <!-- page title and user details -->
 {if $title}
       <table id="page_title" cellspacing="0" cellpadding="5" width="{$tab_width+20}" border="0">
