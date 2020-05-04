@@ -69,6 +69,13 @@ function fillDropdowns() {
     fillProjectDropdown(document.timeRecordForm.client.value);
 
   fillTaskDropdown(document.timeRecordForm.project.value);
+  
+  // Panegyris ++++
+  // This doesn't really belong here but the onload() doesn't point to a general onload() handler.
+  // -- minimize the number of changes right now.
+  formDisable('start');
+  formDisable('finish');
+  // Panegyris ----
 }
 
 // The fillProjectDropdown function populates the project combo box with
@@ -166,6 +173,21 @@ function fillTaskDropdown(id) {
   }
 }
 
+// Panegyris ++++
+// Adapt entry times to 24hr as needed
+function adaptTime(inTime) {
+  var newDate = new Date(Date.parse("01/01/01 "+inTime));
+  var hours = newDate.getHours();
+  var minutes = newDate.getMinutes();
+  var leadingZero = (minutes < 10 ? "0" : "");
+  var newTime = hours+":"+leadingZero+minutes+":00";
+  
+  return newTime;
+}
+// Panegyris ----
+
+
+
 // The formDisable function disables some fields depending on what we have in other fields.
 function formDisable(formField) {
   var formFieldValue = eval("document.timeRecordForm." + formField + ".value");
@@ -185,11 +207,12 @@ function formDisable(formField) {
 
     // Only compute a duration after both entries made
     if ((startDateValue != "") && (endDateValue != "")) {
-      startDateValue = startDateValue + ":00";
-      endDateValue = endDateValue + ":00";
-          
-      var startDate = Date.parse("01/01/01 "+startDateValue);
-      var endDate = Date.parse("01/01/01 "+endDateValue);
+
+      var normalizedStart = adaptTime(startDateValue);
+      var normalizedEnd = adaptTime(endDateValue);
+      
+      var startDate = Date.parse("01/01/01 "+normalizedStart);
+      var endDate = Date.parse("01/01/01 "+normalizedEnd);
         
       var timeDifferenceInMS = endDate - startDate;
       var timeDifferenceInS = Math.floor(timeDifferenceInMS/1000);
