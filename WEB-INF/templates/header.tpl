@@ -95,8 +95,6 @@
     {if $user->can('manage_features')}
             <a class="systemMenu" href="plugins.php">{$i18n.menu.plugins}</a>
     {/if}
-            <a class="systemMenu" href="{$smarty.const.FORUM_LINK}" target="_blank">{$i18n.menu.forum}</a>
-            <a class="systemMenu" href="{$smarty.const.HELP_LINK}" target="_blank">{$i18n.menu.help}</a>
           </td>
         </tr>
       </table>
@@ -161,8 +159,6 @@
   {if isTrue('MULTIORG_MODE') && $smarty.const.AUTH_MODULE == 'db'}
             <a class="systemMenu" href="register.php">{$i18n.menu.register}</a>
   {/if}
-            <a class="systemMenu" href="{$smarty.const.FORUM_LINK}" target="_blank">{$i18n.menu.forum}</a>
-            <a class="systemMenu" href="{$smarty.const.HELP_LINK}" target="_blank">{$i18n.menu.help}</a>
           </td>
         </tr>
       </table>
