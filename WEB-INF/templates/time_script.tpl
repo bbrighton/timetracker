@@ -177,6 +177,32 @@ function formDisable(formField) {
     x.value = "";
     x.disabled = true;
     x.style.background = "#e9e9e9";
+
+
+    // Panegyris ++++ Dynamic computation of duration -- hackery!    
+    var startDateValue = eval("document.timeRecordForm.start.value");
+    var endDateValue = eval("document.timeRecordForm.finish.value");
+
+    // Only compute a duration after both entries made
+    if ((startDateValue != "") && (endDateValue != "")) {
+      startDateValue = startDateValue + ":00";
+      endDateValue = endDateValue + ":00";
+          
+      var startDate = Date.parse("01/01/01 "+startDateValue);
+      var endDate = Date.parse("01/01/01 "+endDateValue);
+        
+      var timeDifferenceInMS = endDate - startDate;
+      var timeDifferenceInS = Math.floor(timeDifferenceInMS/1000);
+
+      var hours = Math.floor(timeDifferenceInS / 3600);
+      var minutes = Math.floor((timeDifferenceInS - (hours*3600)) / 60);
+      var leadingZero = (minutes < 10 ? "0" : "");
+
+      x.value = hours+":"+leadingZero+minutes;
+    }
+    
+    // Panegyris ++++
+
   }
 
   if (((formFieldValue == "") && (formFieldName == "start") && (document.timeRecordForm.finish.value == "")) || ((formFieldValue == "") && (formFieldName == "finish") && (document.timeRecordForm.start.value == ""))) {
